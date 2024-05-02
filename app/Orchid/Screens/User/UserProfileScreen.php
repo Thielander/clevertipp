@@ -6,6 +6,7 @@ namespace App\Orchid\Screens\User;
 
 use App\Orchid\Layouts\User\ProfilePasswordLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
+use App\Orchid\Layouts\User\UserLanguageLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -81,39 +82,51 @@ class UserProfileScreen extends Screen
                 ->description(__("Update your account's profile information and email address."))
                 ->commands(
                     Button::make(__('Save'))
-                        ->type(Color::BASIC())
+                        ->type(Color::PRIMARY())
                         ->icon('bs.check-circle')
                         ->method('save')
                 ),
-
+            Layout::block(UserLanguageLayout::class)
+                ->title(__('Language Settings'))
+                ->description(__('Select your preferred language.'))
+                ->commands(
+                    Button::make(__('Save'))
+                        ->type(Color::PRIMARY())
+                        ->icon('bs.check-circle')
+                        ->method('save')
+                ),
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
                 ->commands(
                     Button::make(__('Update password'))
-                        ->type(Color::BASIC())
+                        ->type(Color::PRIMARY())
                         ->icon('bs.check-circle')
                         ->method('changePassword')
                 ),
         ];
     }
+    
 
-    public function save(Request $request): void
-    {
-        $request->validate([
-            'user.name'  => 'required|string',
-            'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($request->user()),
-            ],
-        ]);
 
-        $request->user()
-            ->fill($request->get('user'))
-            ->save();
+public function save(Request $request): void
+{
+    $request->validate([
+        'user.name'  => 'required|string',
+        'user.email' => [
+            'required',
+            Rule::unique(User::class, 'email')->ignore($request->user()),
+        ],
+        'user.language' => 'required|string' // Stelle sicher, dass die Sprache ausgewählt ist
+    ]);
 
-        Toast::info(__('Profile updated.'));
-    }
+    $request->user()
+        ->fill($request->get('user'))
+        ->save();
+
+    Toast::info(__('Profile updated.'));
+}
+
 
     public function changePassword(Request $request): void
     {

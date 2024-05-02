@@ -30,7 +30,7 @@ use Tabuna\Breadcrumbs\Trail;
 | contains the need "dashboard" middleware group. Now create something great!
 |
 */
-
+Route::middleware(['setLocale'])->group(function () {
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
@@ -102,3 +102,4 @@ Route::screen('/examples/charts', ExampleChartsScreen::class)->name('platform.ex
 Route::screen('/examples/cards', ExampleCardsScreen::class)->name('platform.example.cards');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
+});

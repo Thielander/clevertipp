@@ -64,6 +64,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Cards')
                 ->icon('bs.card-text')
                 ->route('platform.example.cards')
+                ->permission('platform.systems.cards')
                 ->divider(),
 
             Menu::make(__('Users'))
@@ -78,6 +79,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.roles')
                 ->divider(),
 
+                
             Menu::make('Documentation')
                 ->title('Docs')
                 ->icon('bs.box-arrow-up-right')
@@ -97,6 +99,7 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
+                ->addPermission('platform.systems.cards', __('Cards'))
                 ->addPermission('platform.systems.users', __('Users')),
         ];
     }
