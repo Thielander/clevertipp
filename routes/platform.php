@@ -19,6 +19,11 @@ use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
+use App\Orchid\Screens\NumbersScreen;
+use App\Orchid\Screens\NumberstatsScreen;
+use App\Orchid\Screens\Combination2Screen;
+use App\Orchid\Screens\Combination3Screen;
+use App\Orchid\Screens\Combination4Screen;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +39,36 @@ Route::middleware(['setLocale'])->group(function () {
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
+
+Route::screen('numbers', NumbersScreen::class)
+    ->name('platform.numbers')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Your numbers'), route('platform.numbers')));
+
+Route::screen('numberstats', NumberstatsScreen::class)
+    ->name('platform.numberstats')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Number stats'), route('platform.numberstats')));
+
+Route::screen('combinations2', Combination2Screen::class)
+    ->name('platform.combinations2')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Combinations'), route('platform.combinations2')));
+
+Route::screen('combinations3', Combination3Screen::class)
+    ->name('platform.combinations3')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Combinations'), route('platform.combinations3')));
+
+Route::screen('combinations4', Combination4Screen::class)
+    ->name('platform.combinations4')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Combinations'), route('platform.combinations4')));
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)

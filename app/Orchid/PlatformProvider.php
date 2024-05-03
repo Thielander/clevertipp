@@ -34,10 +34,30 @@ class PlatformProvider extends OrchidServiceProvider
     public function menu(): array
     {
         return [
-            Menu::make('Get Started')
-                ->icon('bs.book')
-                ->title('Navigation')
+            Menu::make(__('Home'))
+                ->icon('bs.house-door-fill')
                 ->route(config('platform.index')),
+
+            Menu::make(__('Your numbers'))
+                ->icon('bs.0-square-fill')
+                ->route('platform.numbers'),
+
+            Menu::make(__('Supplementary numbers'))
+                ->icon('bs.bar-chart-fill')
+                ->title(__('Combinations'))
+                ->route('platform.numberstats'),
+
+            Menu::make(__('2 Numbers'))
+                ->icon('bs.2-circle-fill')
+                ->route('platform.combinations2'),
+            
+            Menu::make(__('3 Numbers'))
+                ->icon('bs.3-circle-fill')
+                ->route('platform.combinations3'),
+
+            Menu::make(__('4 Numbers'))
+                ->icon('bs.4-circle-fill')
+                ->route('platform.combinations4'),
 
             Menu::make('Sample Screen')
                 ->icon('bs.collection')

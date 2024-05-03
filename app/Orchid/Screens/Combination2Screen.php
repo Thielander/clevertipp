@@ -1,14 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Orchid\Screens;
 
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
+use App\Models\Lotto;
+use App\Orchid\Layouts\Combination2Layout;
 
-class PlatformScreen extends Screen
+class Combination2Screen extends Screen
 {
+
+  
+
     /**
      * Fetch data to be displayed on the screen.
      *
@@ -16,23 +18,21 @@ class PlatformScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        $combinations2 = Lotto::kombinationen2er();
+        
+        return [
+            'combinations2' => $combinations2
+        ];
     }
 
     /**
      * The name of the screen displayed in the header.
+     *
+     * @return string|null
      */
     public function name(): ?string
     {
-        return 'Clevertipp';
-    }
-
-    /**
-     * Display header description.
-     */
-    public function description(): ?string
-    {
-        return __('Smart bets, smart wins');
+        return __('Combinations');
     }
 
     /**
@@ -48,14 +48,12 @@ class PlatformScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]
+     * @return \Orchid\Screen\Layout[]|string[]
      */
-    public function layout(): iterable
+    public function layout(): array
     {
         return [
-            //Layout::view('platform::partials.update-assets'),
-            //Layout::view('platform::partials.welcome'),
-            Layout::view('home'),
+            new Combination2Layout(),
         ];
     }
 }
