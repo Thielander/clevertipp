@@ -258,4 +258,43 @@ public static function getUniqueFourNumberCombinations()
     return array_values($combinations);
 }
 
+public static function getUniqueFiveNumberCombinations()
+    {
+        // Daten aus der Datenbank holen
+        $lotteryNumbers = DB::table('lottery_numbers')->get(['num1', 'num2', 'num3', 'num4', 'num5']);
+
+        // Ein Set für die einzigartigen Kombinationen und ihre Zählungen initialisieren
+        $combinations = [];
+
+        foreach ($lotteryNumbers as $numbers) {
+            // Alle Zahlen in einem Array speichern
+            $nums = [$numbers->num1, $numbers->num2, $numbers->num3, $numbers->num4, $numbers->num5];
+
+            // Da es nur 5 Zahlen sind, ist jede Zeile bereits eine vollständige Kombination
+            // Sortiert die Zahlen, um sicherzustellen, dass die Reihenfolge irrelevant ist
+            sort($nums);
+
+            // Konvertiert das Array zu einem String, um es eindeutig zu machen
+            $combinationKey = implode(',', $nums);
+
+            // Zählt, wie oft jede Kombination vorkommt
+            if (isset($combinations[$combinationKey])) {
+                $combinations[$combinationKey]['count']++;
+            } else {
+                $combinations[$combinationKey] = [
+                    'combination' => $nums,
+                    'count' => 1
+                ];
+            }
+        }
+
+        // Sortiert das Kombinationen-Array basierend auf der Anzahl der Vorkommen, absteigend
+        uasort($combinations, function ($a, $b) {
+            return $b['count'] - $a['count'];
+        });
+
+        // Nur die Werte des Sets zurückgeben
+        return array_values($combinations);
+    }
+    
 }

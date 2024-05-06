@@ -1,4 +1,5 @@
 @if(isset($eurozahlen) && $eurozahlen->count() > 0)
+<p>{{ __('Use the buttons to filter Lotto Euro numbers before and after the increase to 12 numbers on March 25, 2022, to discover specific trends and statistics.') }}</p>
     <div class="row">
         <h2>{{ __('Single Numbers') }}</h2>
         <p>{{ __('How often was a supplementary numbers drawn?') }}</p>

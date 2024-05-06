@@ -24,6 +24,8 @@ use App\Orchid\Screens\NumberstatsScreen;
 use App\Orchid\Screens\Combination2Screen;
 use App\Orchid\Screens\Combination3Screen;
 use App\Orchid\Screens\Combination4Screen;
+use App\Orchid\Screens\Combination5Screen;
+use App\Orchid\Screens\AnalyseScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +71,19 @@ Route::screen('combinations4', Combination4Screen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Combinations'), route('platform.combinations4')));
+
+Route::screen('combinations5', Combination5Screen::class)
+    ->name('platform.combinations5')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Combinations'), route('platform.combinations5')));
+
+Route::screen('analyse', AnalyseScreen::class)
+    ->name('platform.analyse')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Number analysis'), route('platform.analyse')));
+
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
@@ -120,11 +135,11 @@ Route::screen('roles', RoleListScreen::class)
         ->push(__('Roles'), route('platform.systems.roles')));
 
 // Example...
-Route::screen('example', ExampleScreen::class)
+Route::screen('dashboard', ExampleScreen::class)
     ->name('platform.example')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push('Example Screen'));
+        ->push('Dashboard'));
 
 Route::screen('/examples/form/fields', ExampleFieldsScreen::class)->name('platform.example.fields');
 Route::screen('/examples/form/advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
