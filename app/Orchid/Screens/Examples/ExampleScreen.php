@@ -40,7 +40,6 @@ class ExampleScreen extends Screen
      */
     public function query(): iterable
     {
-
         $ziehungen = Dashboard::countAllEntries();
         $bisherAusgezahlt = Dashboard::bisherAusgeszahlt();
         $jackpotGeknackt = Dashboard::jackpotGeknackt();

@@ -1,0 +1,6 @@
+<div class="bg-white rounded shadow-sm pt-3">
+    <div class="px-3 mb-3">
+        <h3>{{ __('Partially identical figures') }}</h3>
+        <p class="small text-muted pb-3">{{ __('This method checks whether 4 of the numbers have already been drawn.') }}</p>
+    </div>
+</div>

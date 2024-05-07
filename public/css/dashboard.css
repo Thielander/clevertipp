@@ -243,3 +243,20 @@ html.eurojackpot.new .Coupon--single .Coupon__numberGroups {
     padding: 0 1.8vw;
 }
 
+.form-control {
+    border-radius: 10px;      /* Runde Ecken */
+    border: 1px solid #ccc;   /* Leichter Grauton für den Rand */
+    padding: 5px 10px;        /* Etwas Innenabstand für bessere Lesbarkeit */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Schatten für mehr Tiefe */
+    transition: box-shadow 0.3s, border-color 0.3s; /* Sanfte Übergänge für Interaktionen */
+}
+
+.form-control:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Intensiverer Schatten beim Hover */
+    border-color: #888; /* Dunklerer Rand beim Hover */
+}
+.analysenumbers {
+    background-color: #ffffe0; /* Hellgelb */
+}
+
+

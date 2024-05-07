@@ -64,33 +64,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.5-circle-fill')
                 ->route('platform.combinations5'),
 
-                Menu::make(__('Number analysis'))
+            Menu::make(__('Number analysis'))
                 ->icon('bs.123')
                 ->title(__('Analysis'))
                 ->route('platform.analyse'),
 
-            Menu::make('Form Elements')
-                ->icon('bs.card-list')
-                ->route('platform.example.fields')
-                ->active('*/examples/form/*'),
-
-            Menu::make('Overview Layouts')
-                ->icon('bs.window-sidebar')
-                ->route('platform.example.layouts'),
-
-            Menu::make('Grid System')
-                ->icon('bs.columns-gap')
-                ->route('platform.example.grid'),
-
-            Menu::make('Charts')
-                ->icon('bs.bar-chart')
-                ->route('platform.example.charts'),
-
-            Menu::make('Cards')
-                ->icon('bs.card-text')
-                ->route('platform.example.cards')
-                ->permission('platform.systems.cards')
-                ->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
@@ -105,12 +83,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->divider(),
 
                 
-            Menu::make('Documentation')
-                ->title('Docs')
+            Menu::make('Website')
+                ->title('Links')
                 ->icon('bs.box-arrow-up-right')
-                ->url('https://orchid.software/en/docs')
+                ->url('https://clevertipp.com')
                 ->target('_blank'),
-
         ];
     }
 

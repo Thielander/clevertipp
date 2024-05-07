@@ -42,6 +42,11 @@ Route::middleware(['setLocale'])->group(function () {
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
 
+// Diese Route akzeptiert jetzt GET-Requests für das Anzeigen und POST-Requests für das Bearbeiten
+Route::match(['get', 'post'], 'analyse/analyzeData', [AnalyseScreen::class, 'analyzeData'])
+    ->name('platform.analyse.analyzeData');
+
+
 Route::screen('numbers', NumbersScreen::class)
     ->name('platform.numbers')
     ->breadcrumbs(fn (Trail $trail) => $trail

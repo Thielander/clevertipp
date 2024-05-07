@@ -19,7 +19,7 @@
                 <b class="clevertipp-superzahl">{{ $letzterEintragZahlenUndEinsatz->num6 }}</b>
                 <b class="clevertipp-superzahl">{{ $letzterEintragZahlenUndEinsatz->num7 }}</b>
             </span>
-        </div>
+        </div>  
         <div class="clevertipp-right">
             <div>
                 <span class="clevertipp-zusatz">
@@ -34,6 +34,9 @@
                 </span>
                 @endif
                 <br>
+                <a href="/portal/analyse?num1={{ $letzterEintragZahlenUndEinsatz->num1 }}&num2={{ $letzterEintragZahlenUndEinsatz->num2 }}&num3={{ $letzterEintragZahlenUndEinsatz->num3 }}&num4={{ $letzterEintragZahlenUndEinsatz->num4 }}&num5={{ $letzterEintragZahlenUndEinsatz->num5 }}&ext1={{ $letzterEintragZahlenUndEinsatz->num6 }}&ext2={{ $letzterEintragZahlenUndEinsatz->num7 }}" class="btn btn-info" >
+                    <strong>{{ __('Analyze numbers') }}</strong> 
+                </a>
             </div>
         </div>
     </div>

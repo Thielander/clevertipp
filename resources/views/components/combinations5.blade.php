@@ -22,7 +22,7 @@
                             <div class="me-3">
                                 <div class="text-lg fw-bold font-monospace">  
                                     {{ __('Combination') }}:<br>
-                                    {{ $item['combination'][0] }}-{{ $item['combination'][1] }}-{{ $item['combination'][2] }}-{{ $item['combination'][3] }}-{{ $item['combination'][4] }}<br>
+                                    {{ $item['combination'][0] }} {{ $item['combination'][1] }} {{ $item['combination'][2] }} {{ $item['combination'][3] }} {{ $item['combination'][4] }}<br>
                                     {{ __('Count') }}: {{ $item['count'] }}<br>
                                 </div>
                             </div>

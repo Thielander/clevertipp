@@ -10,7 +10,7 @@
                             <div class="me-3">
                                 <div class="text-lg fw-bold font-monospace">  
                                     {{ __('Combination') }}:<br>
-                                    {{ $kombination->num1 }} - {{ $kombination->num2 }}<br>
+                                    {{ $kombination->num1 }} {{ $kombination->num2 }}<br>
                                     {{ __('Count') }}: {{ $kombination->count }}<br>
                                 </div>
                             </div>
