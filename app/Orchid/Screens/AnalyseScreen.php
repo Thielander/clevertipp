@@ -9,7 +9,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Group;
 use App\Models\Analyse;
 use Illuminate\Http\Request;
-
+use App\Models\Muster;
 
 class AnalyseScreen extends Screen
 {
@@ -20,18 +20,17 @@ class AnalyseScreen extends Screen
      */
     public function query(): iterable
     {
-        // Array für die Zahlen anlegen
-        $numbers = [];
-    
-        // Jede Nummer anfragen, Standardwert auf 0 setzen, wenn nicht vorhanden
-        $numbers['num1'] = request('num1', 0);
-        $numbers['num2'] = request('num2', 0);
-        $numbers['num3'] = request('num3', 0);
-        $numbers['num4'] = request('num4', 0);
-        $numbers['num5'] = request('num5', 0);
-    
-        $numbers['ext1'] = request('ext1', 0);
-        $numbers['ext2'] = request('ext2', 0);
+        $numbers = [
+            'num1' => $this->limitToTwoDigits(request('num1', 0)),
+            'num2' => $this->limitToTwoDigits(request('num2', 0)),
+            'num3' => $this->limitToTwoDigits(request('num3', 0)),
+            'num4' => $this->limitToTwoDigits(request('num4', 0)),
+            'num5' => $this->limitToTwoDigits(request('num5', 0)),
+            'ext1' => $this->limitToTwoDigits(request('ext1', 0)),
+            'ext2' => $this->limitToTwoDigits(request('ext2', 0)),
+        ];
+
+        $allNumbers = [$numbers['num1'], $numbers['num2'], $numbers['num3'], $numbers['num4'], $numbers['num5'], $numbers['ext1'], $numbers['ext2']];
     
         $abstaendeZahlen = Analyse::checkMuster(
             $numbers['num1'],
@@ -53,14 +52,38 @@ class AnalyseScreen extends Screen
             $numbers['num5']
         );
 
+        $muster = Muster::checkNumber(
+            $numbers['num1'],
+            $numbers['num2'],
+            $numbers['num3'],
+            $numbers['num4'],
+            $numbers['num5']
+        );
+
         return [
+            'numbers' => $allNumbers,
             'zahlenanalyse' => $numbers,
             'abstaendeZahlen' => $abstaendeZahlen,
             'alleAbstaende' => $alleAbstaende,
+            'muster' => $muster,
             'viererkombinationen' => $alleViererKombinationenFinden
         ];
     }
     
+  /**
+ * Beschränkt eine Zahl auf zwei Ziffern.
+ * 
+ * @param mixed $number Die ursprüngliche Zahl oder Eingabe.
+ * @return int Die auf zwei Ziffern begrenzte Zahl.
+ */
+protected function limitToTwoDigits($number): int {
+    // Konvertiere die Eingabe in einen String und schneide alles nach den ersten zwei Zeichen ab
+    $numberStr = substr((string)$number, 0, 2);
+
+    // Konvertiere den String zurück in eine ganze Zahl
+    return (int)$numberStr;
+}
+
 
     /**
      * The name of the screen displayed in the header.
@@ -70,6 +93,14 @@ class AnalyseScreen extends Screen
     public function name(): ?string
     {
         return __('Number analysis');
+    }
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return __('Enter your numbers in the form and click on analyze.');
     }
 
     /**
@@ -138,17 +169,21 @@ class AnalyseScreen extends Screen
                         ->type('number')
                         ->title(__('Number 5')),
                     Input::make('zahlenanalyse.ext1')
-                    ->type('number')
-                    ->title(__('Extra 1')),
+                        ->type('number')
+                        ->title(__('Extra 1')),
                     Input::make('zahlenanalyse.ext2')
-                    ->type('number')
-                    ->title(__('Extra 2'))
+                        ->type('number')
+                        ->title(__('Extra 2'))
                 ]),
             ]),
             //Layout::view('components.analyseformular'),
             Layout::split([
                 Layout::view('components.identicalnumbersHead'),
                 Layout::view('components.identicalnumbers'),
+            ])->ratio('30/70'),
+            Layout::split([
+                Layout::view('components.distanceanalyseHead'),
+                Layout::view('components.distanceanalyse'),
             ])->ratio('30/70'),
             Layout::split([
                 Layout::view('components.musteranalyseHead'),

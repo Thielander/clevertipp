@@ -10,6 +10,7 @@ use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Orchid\Support\Color;
 
+
 class PlatformProvider extends OrchidServiceProvider
 {
     /**
@@ -43,6 +44,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.0-square-fill')
                 ->route('platform.numbers'),
 
+            Menu::make(__('Number analysis'))
+                ->icon('bs.123')
+                ->route('platform.analyse'),
+
+            Menu::make(__('Statistics'))
+                ->icon('bs.bar-chart-steps')
+                ->route('platform.statistik'),
+
             Menu::make(__('Supplementary numbers'))
                 ->icon('bs.bar-chart-fill')
                 ->title(__('Combinations'))
@@ -64,10 +73,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.5-circle-fill')
                 ->route('platform.combinations5'),
 
-            Menu::make(__('Number analysis'))
-                ->icon('bs.123')
-                ->title(__('Analysis'))
-                ->route('platform.analyse'),
+          
 
 
             Menu::make(__('Users'))

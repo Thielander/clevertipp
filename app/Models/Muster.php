@@ -186,11 +186,34 @@ class Muster extends Model
          *     *
          */
         $winkeluntenlinks = [
-            [1, 2, 3, 13, 23], //Feld Quer
+            [1, 2, 3, 13, 23], 
+            [2, 3, 4, 14, 24], 
+            [3, 4, 5, 15, 25], 
+            [4, 5, 6, 16, 26], 
+            [5, 6, 7, 17, 27], 
+            [6, 7, 8, 18, 28], 
+            [7, 8, 9, 19, 29], 
+            [8, 9, 10, 20, 30], 
+            [11, 12, 13, 23, 33], 
+            [12, 13, 14, 24, 34], 
+            [13, 14, 15, 25, 35], 
+            [14, 15, 16, 26, 36], 
+            [15, 16, 17, 27, 37], 
+            [16, 17, 18, 28, 38], 
+            [17, 18, 19, 29, 39], 
+            [18, 19, 20, 30, 40], 
+            [21, 22, 23, 33, 43], 
+            [22, 23, 24, 34, 44], 
+            [23, 24, 25, 35, 45], 
+            [24, 25, 26, 36, 46], 
+            [25, 26, 27, 37, 47], 
+            [26, 27, 28, 38, 48], 
+            [27, 28, 29, 39, 49], 
+            [28, 29, 30, 40, 50], 
          
         ];
 
-        $muster['WinkelUntenLinks'] = $winkeluntenlinks;
+        $muster['WinkelUntenLinksQuer'] = $winkeluntenlinks;
 
         /**
          * Winkel Muster PlusFeld Quer
@@ -199,31 +222,30 @@ class Muster extends Model
          *     *
          */
         $plus = [
-            [2, 11, 12, 13, 22], //Feld Quer
-            [3, 12, 13, 14, 23], //Feld Quer
-            [4, 13, 14, 15, 24], //Feld Quer
-            [5, 14, 15, 16, 25], //Feld Quer
-            [6, 15, 16, 17, 26], //Feld Quer
-            [7, 16, 17, 18, 27], //Feld Quer
-            [8, 17, 18, 19, 28], //Feld Quer
-            [9, 18, 19, 20, 29], //Feld Quer
-            [12, 21, 22, 23, 32], //Feld Quer
-            [13, 22, 23, 24, 33], //Feld Quer
-            [14, 23, 24, 25, 34], //Feld Quer 
-            [15, 24, 25, 26, 35], //Feld Quer
-            [16, 25, 26, 27, 36], //Feld Quer
-            [17, 26, 27, 28, 37], //Feld Quer 
-            [18, 27, 28, 29, 38], //Feld Quer
-            [19, 28, 29, 30, 39], //Feld Quer
-            [22, 31, 32, 33, 42], //Feld Quer
-            [23, 32, 33, 34, 43], //Feld Quer
-            [24, 33, 34, 35, 44], //Feld Quer
-            [25, 34, 35, 36, 45], //Feld Quer
-            [26, 35, 36, 37, 46], //Feld Quer
-            [27, 36, 37, 38, 47], //Feld Quer
-            [28, 37, 38, 39, 48], //Feld Quer
-            [29, 38, 39, 40, 49], //Feld Quer
-            [2, 6, 7, 8, 12], //Feld Hochkant
+            [2, 11, 12, 13, 22], 
+            [3, 12, 13, 14, 23], 
+            [4, 13, 14, 15, 24], 
+            [5, 14, 15, 16, 25], 
+            [6, 15, 16, 17, 26], 
+            [7, 16, 17, 18, 27], 
+            [8, 17, 18, 19, 28], 
+            [9, 18, 19, 20, 29], 
+            [12, 21, 22, 23, 32],
+            [13, 22, 23, 24, 33],
+            [14, 23, 24, 25, 34], 
+            [15, 24, 25, 26, 35],
+            [16, 25, 26, 27, 36],
+            [17, 26, 27, 28, 37], 
+            [18, 27, 28, 29, 38],
+            [19, 28, 29, 30, 39],
+            [22, 31, 32, 33, 42],
+            [23, 32, 33, 34, 43],
+            [24, 33, 34, 35, 44],
+            [25, 34, 35, 36, 45],
+            [26, 35, 36, 37, 46],
+            [27, 36, 37, 38, 47],
+            [28, 37, 38, 39, 48],
+            [29, 38, 39, 40, 49],
          
         ];
 
@@ -238,26 +260,75 @@ class Muster extends Model
          *      *  *
          */
         $pfeil = [
-            [3, 12, 21, 32, 43], //Feld Quer
-            [4, 13, 22, 33, 44], //Feld Quer
-            [5, 14, 23, 34, 45], //Feld Quer
-            [6, 15, 24, 35, 46], //Feld Quer
-            [7, 16, 25, 36, 47], //Feld Quer
-            [8, 17, 26, 37, 48], //Feld Quer
-            [9, 18, 27, 38, 49], //Feld Quer
-            [10, 19, 28, 39, 50], //Feld Quer
-            [1, 12, 23, 32, 41], //Feld Quer
-            [2, 13, 24, 33, 42], //Feld Quer
-            [3, 14, 25, 34, 43], //Feld Quer
-            [4, 15, 26, 35, 44], //Feld Quer
-            [5, 16, 27, 36, 45], //Feld Quer
-            [6, 17, 28, 37, 46], //Feld Quer
-            [7, 18, 29, 38, 47], //Feld Quer
-            [8, 19, 30, 39, 48], //Feld Quer
+            [3, 12, 21, 32, 43], 
+            [4, 13, 22, 33, 44], 
+            [5, 14, 23, 34, 45], 
+            [6, 15, 24, 35, 46], 
+            [7, 16, 25, 36, 47], 
+            [8, 17, 26, 37, 48], 
+            [9, 18, 27, 38, 49], 
+            [10, 19, 28, 39, 50], 
+            [1, 12, 23, 32, 41], 
+            [2, 13, 24, 33, 42], 
+            [3, 14, 25, 34, 43], 
+            [4, 15, 26, 35, 44], 
+            [5, 16, 27, 36, 45], 
+            [6, 17, 28, 37, 46], 
+            [7, 18, 29, 38, 47], 
+            [8, 19, 30, 39, 48], 
          
         ];
 
-        $muster['Pfeil'] = $pfeil;
+        $muster['PfeilQuer'] = $pfeil;
+
+        /**
+         * Eigene Muster PfeilFeld Hochkant
+         *      *  *
+         *    *      *
+         *  *          *
+         *    *      *
+         *      *  *
+         */
+        $pfeilhochkant = [
+            [3, 7, 11, 17, 23], 
+            [4, 8, 12, 18, 24],
+            [5, 9, 13, 19, 25],
+            [8, 12, 16, 22, 28],
+            [9, 13, 17, 23, 29],
+            [10, 14, 18, 24, 30],
+            [13, 17, 21, 27, 33],
+            [14, 18, 22, 28, 34],
+            [15, 19, 23, 29, 35],
+            [18, 22, 26, 32, 38],
+            [19, 23, 26, 32, 38],
+            [20, 24, 27, 33, 39],
+            [23, 27, 31, 37, 43],
+            [24, 28, 32, 38, 44],
+            [25, 29, 33, 39, 45],
+            [28, 32, 36, 42, 48],
+            [29, 33, 37, 43, 49],
+            [30, 34, 38, 44, 50],
+            [1, 7, 13, 17, 21],
+            [2, 8, 14, 18, 22],
+            [3, 9, 15, 19, 23],
+            [6, 12, 18, 22, 26],
+            [7, 13, 19, 23, 27],
+            [8, 14, 20, 24, 28],
+            [11, 17, 23, 27, 31],
+            [12, 18, 24, 28, 32],
+            [13, 19, 25, 29, 33],
+            [16, 22, 28, 32, 36],
+            [17, 23, 29, 33, 37],
+            [18, 24, 30, 33, 38],
+            [21, 27, 33, 37, 41],
+            [22, 28, 34, 38, 42],
+            [23, 29, 35, 39, 43],
+            [26, 32, 38, 42, 46],
+            [27, 33, 39, 43, 47],
+            [28, 34, 40, 44, 48],
+        ];
+
+        $muster['PfeilHochkant'] = $pfeilhochkant;
         
          /**
          * Eigene Muster Zick Zack Senkrecht Feld Quer
@@ -336,26 +407,37 @@ class Muster extends Model
    
     
 
+ /**
+ * Überprüft, ob die Zahlen ein Muster ergeben und gibt Details zurück.
+ */
+public static function checkNumber(int $num1 = 0, int $num2 = 0, int $num3 = 0, int $num4 = 0, int $num5 = 0, int $ext1 = 0, int $ext2 = 0, $date = null)
+{
+    $muster = self::generiereAlleMuster();
 
-    public static function checkNumber(int $num1, int $num2, int $num3, int $num4, int $num5): bool
-    {
-        $muster = self::generiereAlleMuster();
-    
-        // Kombination der übergebenen Zahlen erstellen
-        $kombination = [$num1, $num2, $num3, $num4, $num5];
-    
-        // Durch jedes Muster iterieren und überprüfen, ob die Kombination enthalten ist
-        foreach ($muster as $musterTyp => $musterListe) {
-            foreach ($musterListe as $einzelnesMuster) {
-                // Überprüfen, ob alle Zahlen der Kombination im Muster enthalten sind
-                $anzahlUebereinstimmungen = count(array_intersect($kombination, $einzelnesMuster));
-                if ($anzahlUebereinstimmungen === 5) {
-                    return true; // Die Kombination wurde im aktuellen Muster gefunden
-                }
+    // Kombination der übergebenen Zahlen erstellen
+    $kombination = [$num1, $num2, $num3, $num4, $num5];
+    $zusatzzahlen = [$ext1, $ext2];
+    $gefundeneMuster = [];
+    $gefunden = false;
+
+    // Durch jedes Muster iterieren und überprüfen, ob die Kombination enthalten ist
+    foreach ($muster as $musterTyp => $musterListe) {
+        foreach ($musterListe as $einzelnesMuster) {
+            // Überprüfen, ob alle Zahlen der Kombination im Muster enthalten sind
+            $anzahlUebereinstimmungen = count(array_intersect($kombination, $einzelnesMuster));
+            if ($anzahlUebereinstimmungen === 5) {
+                $gefunden = true;
+                $gefundeneMuster[] = $musterTyp; // Speichere den Typ des gefundenen Musters
             }
         }
-    
-        return false; // Die Kombination wurde in keinem Muster gefunden
     }
+
+    return [
+        'numbers' => array_merge($kombination, $zusatzzahlen),
+        'found' => $gefunden,
+        'found_patterns' => $gefundeneMuster
+    ];
+}
+
     
 }

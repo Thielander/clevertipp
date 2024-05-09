@@ -21,6 +21,7 @@ use App\Models\Muster;
 use App\Models\Ziehung;
 use App\Models\Lottodaten;
 use App\Models\Analyse;
+use App\Models\Statistik;
 
 
 class ExampleScreen extends Screen
@@ -48,7 +49,7 @@ class ExampleScreen extends Screen
         $letzterEintragZahlenUndEinsatz = Dashboard::letzterEintragZahlenUndEinsatz();
         $letzterEintragGewinnklassen = Dashboard::letzterEintragGewinnklassen();
     
-        $alleMuster = Muster::generiereAlleMuster();
+        
 
         $alleAbstaende = Analyse::checkMuster(
             $letzterEintragZahlenUndEinsatz->num1,
@@ -70,6 +71,16 @@ class ExampleScreen extends Screen
         $naechsteZiehung = Ziehung::naechstesZiehungsdatum();
 
         $lottoDaten = Lottodaten::fetchData();
+
+        $statistik = Statistik::wieOftWurdeZahlGezogen(
+            $letzterEintragZahlenUndEinsatz->num1,
+            $letzterEintragZahlenUndEinsatz->num2,
+            $letzterEintragZahlenUndEinsatz->num3,
+            $letzterEintragZahlenUndEinsatz->num4,
+            $letzterEintragZahlenUndEinsatz->num5,
+            $letzterEintragZahlenUndEinsatz->num6,
+            $letzterEintragZahlenUndEinsatz->num7
+        );
        
         return [
             'categorycharts'  => [
@@ -105,6 +116,7 @@ class ExampleScreen extends Screen
             'naechsteziehung' => $naechsteZiehung,
             'lottodaten' => $lottoDaten,
             'zahlencheck' => $check,
+            'statistik' => $statistik,
             'metrics' => [
                 'sales'    => ['value' => number_format($ziehungen)],
                 'visitors' => ['value' => number_format($bisherAusgezahlt) . '€'],
@@ -138,15 +150,7 @@ class ExampleScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Button::make('Show toast')
-                ->method('showToast')
-                ->novalidate()
-                ->icon('bs.chat-square-dots'),
-
-            ModalToggle::make('Launch demo modal')
-                ->modal('exampleModal')
-                ->method('showToast')
-                ->icon('bs.window'),
+           
         ];
     }
 
@@ -170,10 +174,8 @@ class ExampleScreen extends Screen
 
            
             Layout::columns([
-                
                 Layout::view('naechsteziehung', compact('letzterEintragZahlenUndEinsatz')),
                 Layout::view('dashboardzahlen', compact('letzterEintragZahlenUndEinsatz')),
-                
             ]),
             Layout::columns([
                 Layout::view('dashboardanalyse', compact('letzterEintragZahlenUndEinsatz')),
@@ -200,18 +202,9 @@ class ExampleScreen extends Screen
                 ChartLineExample::make('charts', __('Chances of winning') . " in %")
                     ->description(__('The odds of winning in each class are determined by the combination of correctly picked numbers.')),
             ]),
-            Layout::modal('exampleModal', Layout::rows([
-                Input::make('toast')
-                    ->title('Messages to display')
-                    ->placeholder('Hello world!')
-                    ->help('The entered text will be displayed on the right side as a toast.')
-                    ->required(),
-            ]))->title('Create your own toast message'),
+        
         ];
     }
 
-    public function showToast(Request $request): void
-    {
-        Toast::warning($request->get('toast', 'Hello, world! This is a toast message.'));
-    }
+ 
 }

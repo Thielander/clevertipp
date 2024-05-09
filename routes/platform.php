@@ -26,6 +26,7 @@ use App\Orchid\Screens\Combination3Screen;
 use App\Orchid\Screens\Combination4Screen;
 use App\Orchid\Screens\Combination5Screen;
 use App\Orchid\Screens\AnalyseScreen;
+use App\Orchid\Screens\StatistikScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,12 @@ Route::screen('analyse', AnalyseScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Number analysis'), route('platform.analyse')));
+
+Route::screen('statistik', StatistikScreen::class)
+    ->name('platform.statistik')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Statistics'), route('platform.statistik')));
 
 
 // Platform > Profile

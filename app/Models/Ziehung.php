@@ -8,13 +8,13 @@ use Carbon\Carbon;
 class Ziehung extends Model
 {
 
-    public static function naechstesZiehungsdatum(): string {
-        $jetzt = Carbon::now();
-        $heute = $jetzt->dayOfWeek;
+    public static function naechstesZiehungsdatum($timezone = 'Europe/Berlin'): string {
+        $jetzt = Carbon::now($timezone);  
+        $heute = $jetzt->dayOfWeek; 
         $uhrzeit = $jetzt->hour;
 
         // Wochentage als Konstanten: 1 für Montag, 2 für Dienstag, ..., 5 für Freitag
-        $dienstag = Carbon::TUESDAY;
+        $dienstag = Carbon::TUESDAY; //2
         $freitag = Carbon::FRIDAY;
 
         if ($heute == $dienstag && $uhrzeit < 21) {

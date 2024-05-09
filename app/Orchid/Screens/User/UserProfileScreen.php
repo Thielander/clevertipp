@@ -7,6 +7,7 @@ namespace App\Orchid\Screens\User;
 use App\Orchid\Layouts\User\ProfilePasswordLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserLanguageLayout;
+use App\Orchid\Layouts\User\UserTimezoneLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -39,7 +40,7 @@ class UserProfileScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'My Account';
+        return 'Settings';
     }
 
     /**
@@ -95,6 +96,15 @@ class UserProfileScreen extends Screen
                         ->icon('bs.check-circle')
                         ->method('save')
                 ),
+            Layout::block(UserTimezoneLayout::class)
+                ->title(__('Time Settings'))
+                ->description(__('Select your preferred time zone.'))
+                ->commands(
+                    Button::make(__('Save'))
+                        ->type(Color::PRIMARY())
+                        ->icon('bs.check-circle')
+                        ->method('save')
+                ),
             Layout::block(ProfilePasswordLayout::class)
                 ->title(__('Update Password'))
                 ->description(__('Ensure your account is using a long, random password to stay secure.'))
@@ -117,7 +127,8 @@ public function save(Request $request): void
             'required',
             Rule::unique(User::class, 'email')->ignore($request->user()),
         ],
-        'user.language' => 'required|string' // Stelle sicher, dass die Sprache ausgewählt ist
+        'user.language' => 'required|string', // Stelle sicher, dass die Sprache ausgewählt ist
+        'user.timezone' => 'required|string|timezone'
     ]);
 
     $request->user()
