@@ -30,6 +30,7 @@ $data = json_decode($json, true);
 
 
 // Verbindung zur Datenbank herstellen (Angaben anpassen)
+//Zugangsdaten nicht mehr gültig, daher stehengelassen
 $db_host = 'clevertipp.com';
 $db_name = 'd0404e94';
 $db_user = 'd0404e94';
