@@ -1,7 +1,7 @@
 <?php
 exit;
 // Verbindung zur Datenbank herstellen
-$pdo = new PDO('mysql:host=clevertipp.com;dbname=d0404e94', 'd0404e94', 'FYDsWuHhaPRQVB3HcYzS');
+$pdo = new PDO('mysql:host=clevertipp.com;dbname=d0404e94', 'd0404e94', 'FYDsWuHhaPRQVB3HcYzS'); //Alte #zugangsdaten sind nicht mehr gültig, daher stehen gelassen
 
 // Funktion zum Prüfen, ob ein Eintrag für ein bestimmtes Datum bereits vorhanden ist
 function entryExists($pdo, $date) {
